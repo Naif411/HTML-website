@@ -2,33 +2,338 @@
 <html>
 <head>
 
-
     <link rel="stylesheet" href="style.css">
+   
+      </head>
+      <style>
+      
+* {
+  box-sizing: border-box;
+}
 
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
-</head>
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.header {
+  background-color: #9933cc;
+  color: #ffffff;
+  padding: 15px;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+
+.aside {
+  background-color: #33b5e5;
+  padding: 15px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.footer {
+  background-color: #0099cc;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+     
+     #shuffleList {
+          color: black;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 300%;
+        }
+        
+            
+            tr:nth-child(even) 
+            {
+                background-color: #fff;
+            }
+            tr:nth-child(odd) 
+            {
+                background-color: rgb(160, 155, 163);
+            }
+           
+    </style>
 <body >
+    <style>
+        table, th, td {
+            width: 5px;
+          border:1px solid rgb(17, 15, 15);
+          border-collapse: collapse;
+          margin: 50px;
+          padding: 20px;
+          text-align: center;
+        } 
+       
+        th,td {
+            padding: 30px;
+            text-align: left;
+            border-bottom: 1px solid #ebe5e5;
+                }
+                #he {
+                  background-color:#3b165e ;
+                  color: #fff;
+                }
+                
+                tr:hover {
+                    background-color: #f5f5f5;
+                    transform: scale(1.02);
+                    box-shadow: 2px 2px 12px black, -1px -1px 8px rgba(0, 0,0,0.2)
+                }
+                </style>
+
+  
     <nav class="navbar">
+     
         <ul>
             <li><a  href="#home">Home</a></li>
-            <li><a href="#About">about project</a></li>
+            <li><a href="#About">About project </a></li>
             <li><a href="#html">HTML</a></li>
             <li><a href="#Css">Css</a></li>
             <li ><a href="#Java">Java Script</a></li>
             <li><a href="#contact">Contact us</a></li>
           </ul>
-        </nav>
+          </nav>
+         
 
-    <section id="home">
-        <div class="main">
-            <h1 class="headings"></h1>
+          <section id="home">
+                <div id="shuffleList"></div>
+                
+               
+
+                <script>
+                    
+                    // Array of items to shuffle
+                    var listItems = ['Amer / 411006693', 'Abdullah / 411007033', 'Naif / 411001462 ', 'Fahd / 411006654 ',];
             
-        </div>
-    </section>
-   
+                    // Shuffle function
+                    function shuffle(array) {
+                        var currentIndex = array.length, temporaryValue, randomIndex;
+                    
+                        // While there remain elements to shuffle
+                        while (0 !== currentIndex) {
+                    
+                            // Pick a remaining element
+                            randomIndex = Math.floor(Math.random() * currentIndex);
+                            currentIndex -= 1;
+                    
+                            // Swap it with the current element
+                            temporaryValue = array[currentIndex];
+                            array[currentIndex] = array[randomIndex];
+                            array[randomIndex] = temporaryValue;
+                        }
+                    
+                        return array;
+                    }
+            
+                    // Shuffle the list items array
+                    var shuffledList = shuffle(listItems);
+            
+                    // Display the shuffled list
+                    var shuffleListDiv = document.getElementById("shuffleList");
+                    for (var i = 0; i < shuffledList.length; i++) {
+                        var listItem = document.createElement("p");
+                        listItem.textContent = shuffledList[i];
+                        shuffleListDiv.appendChild(listItem);
+                        
+                    }
+                    
+                </script>
+               
+            
+        </section>
+        
       
-</body>
+       
+        <section id="About"><br><br><br><br>
+            <h1 class="HD">About project:</h1>
+            <pre span class="p">
+ 
+ In this project we used three programming languages witch is :
+ HTML ( main languege ) , CSS and Java script , the goal is to make
+  a website that display: information , images , videos and should be 
+  a responsive website.   </pre>
+       
+  <table class="center">
+            
+    
+  <tr>
+    <th id="he">1</th>
+    <th>HTML</th>
+  </tr>
+  <tr>
+    <th id="he">2</td>
+    <td>CSS</td>  
+  </tr>
+  <tr>
+    <th id="he">3</td>
+    <td>JavaScript</td>
+  </tr>
 
+</table>
+
+
+
+</section>
+
+
+        <section id="html"><br><br><br><br>
+            <h2 class="HD">Html:</h2>
+            <pre span class="R">
+               
+ stands for Hyper Text Markup Language.
+ HTML is the standard markup language for creating
+ Web pages. HTML describes the structure of a Web page.
+ HTML consists of a series of elements. 
+ HTML elements tell the browser how to display the content 
+</pre>
+<br>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xKuJrmlCdig?si=A6nkjjKJk6V7JoWQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </section>
+  
+        <section id="Css"><br><br>
+          <h2 class="HD">CSS:</h2>
+          <pre span class="R">
+             
+CSS stands for Cascading Style Sheets.
+It is a style sheet language which is 
+used to describe the look and formatting 
+of a document written in markup language. 
+It provides an additional feature to HTML.
+</pre> <br><br>
+<iframe width="490" height="290" src="https://www.youtube.com/embed/OEV8gMkCHXQ?si=VZPTRpXToZeD4AQz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>     
+ </section>     
+
+
+
+<section id="Java"><br><br><br><br>
+  <h2 class="HD">JavaScript:</h2>
+  <pre span class="R">
+
+JavaScript is an open-source programming language.
+It is designed for creating web-centric applications.
+It is lightweight and interpreted, which makes it much 
+faster than other languages. JavaScript is integrated 
+with HTML, which makes it easier to implement 
+JavaScript in web applications
+  </pre>
+  <div class="AB">
+  <UL>
+    <LI>
+      <img id="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS44JgH7kCcBgfbevDTFC9Q0V-Yqo9pn40bww&usqp=CAU" alt="">
+      <p></p>
+    </LI>
+  </UL>
+  </div>
+
+</section>
+
+
+  <section id="contact"><br><br><br><br>
+    <body style="background-color: bisque;">
+  
+      <div id ="vv">
+  <h2 style="text-align: center;">
+      <i class="fa-solid fa-headset"></i>need help? 
+  </h2>
+  <div class="con">
+      <img src="https://www.poornima.org/img/contact-img.png" alt="get in touch">
+      <form action="https://formsubmit.co/your@email.com" method="POST">
+          <input type="text" name="Name" id="Name" placeholder="Name" required>
+          <input type="email" name="Email" id="Email" placeholder="Email" required>
+          <textarea name="Massage" id="Message" cols="30" rows="10" placeholder="Message"></textarea>
+          <input class="btn" type="submit" value="Submit">
+          
+  
+      </form>
+  
+  </div>
+  
+  
+  </div>
+  
+  </body>
+
+
+
+
+
+</section>
+
+
+
+
+
+</body>
 
 
 
